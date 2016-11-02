@@ -1,5 +1,16 @@
 /* app css stylesheet */
 
+.quasi_body {
+    width: 100%;
+    background-color: #F0F5E6;
+    position: absolute;
+    z-index: 10002;
+    top: 0px;
+    min-height: 100%;
+    /*height: auto !important;*/
+    height: 100%;
+}
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
