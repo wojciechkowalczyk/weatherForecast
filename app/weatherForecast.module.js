@@ -1,5 +1,5 @@
 angular.module('weatherForecast', [
-    'forecast', 
+    'forecast' 
 ]);
 
 angular.module('weatherForecast').
