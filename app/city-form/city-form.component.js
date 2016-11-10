@@ -1,6 +1,6 @@
 angular.module('cityForm').
   component('cityForm', {
-    template: '<div>{{$ctrl.forecast}}</div>',
+    templateUrl: 'city-form/city-form.template.html',
     controller: ['forecastService',
       function formController(forecastService) {
         var self = this;
