@@ -11,3 +11,9 @@
     height: 100%;
 }
 
+.city_form {
+    position: absolute;
+    z-index: 10004;
+    top: 2%;
+    left: 33%;
+}
