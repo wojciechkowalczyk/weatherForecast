@@ -6,10 +6,15 @@ angular.module('weatherForecast', [
 angular.module('weatherForecast').
   component('forecast', {
     template: '<div>{{$ctrl.forecast}}</div>',
-    controller: ['forecastService',
-      function forecastController(forecastService) {
+    controller: ['forecastService', 'cityValue',
+      function forecastController(forecastService, cityValue) {
         var self = this;
-        self.forecast = forecastService.getCityForecast('warsaw');
+        self.forecast = forecastService.getCityForecast(cityValue);
+        self.getForecast = function getForecast() {
+            self.forecast = forecastService.getCityForecast(cityValue);
+        };
       }
     ]
   });
+  
+angular.module('weatherForecast').value('cityValue', 'wieliczka');
