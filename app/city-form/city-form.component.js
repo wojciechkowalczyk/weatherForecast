@@ -1,11 +1,15 @@
 angular.module('cityForm').
   component('cityForm', {
     templateUrl: 'city-form/city-form.template.html',
-    controller: [function cityFormController() {
-        
+    controller: ['cityValue', 'forecastService', 
+      function cityFormController(cityValue, forecastService) {
+        var self = this;
+        self.getForecast = function getForecast(city) {
+            cityValue = city;
+            alert(cityValue);
+            forecastService.getForecast(cityValue);
+        };
       }
     ]
   });
-  
-  angular.module('weatherForecast').value('cityValue', 'london');
   
