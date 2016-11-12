@@ -5,13 +5,16 @@ angular.module('weatherForecast', [
 
 angular.module('weatherForecast').
   component('forecast', {
-    template: '<div>{{$ctrl.forecast}}</div>',
-    controller: ['forecastService', 'cityValue',
+    template:   '<div>'+
+                    '<input ng-click="$ctrl.getForecast()" type="submit" value="get forecast">'+
+                '</div>' + 
+                '<div>{{$ctrl.forecast}}</div>',
+        controller: ['forecastService', 'cityValue',
       function forecastController(forecastService, cityValue) {
         var self = this;
-        self.forecast = forecastService.getCityForecast(cityValue);
-        self.getForecast = function getForecast() {
-            self.forecast = forecastService.getCityForecast(cityValue);
+        //self.forecast = forecastService.getCityForecast(cityValue);
+        self.getForecast = function () {
+            self.forecast = forecastService.getCityForecast(forecastService.cityValue);
         };
       }
     ]

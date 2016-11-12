@@ -5,9 +5,10 @@ angular.module('cityForm').
       function cityFormController(cityValue, forecastService) {
         var self = this;
         self.getForecast = function getForecast(city) {
-            cityValue = city;
-            alert(cityValue);
-            forecastService.getForecast(cityValue);
+            forecastService.cityValue = city;
+            //angular.module('weatherForecast').value('cityValue', city);
+            alert(forecastService.cityValue);
+            forecastService.getForecast(forecastService.cityValue);
         };
       }
     ]
