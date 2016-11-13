@@ -1,4 +1,4 @@
-angular.module('weatherForecast', [
+angular.module('app', [
     'forecast',
     'cityForm',
     'forecastPresentation'
