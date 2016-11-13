@@ -5,19 +5,29 @@ angular.module('weatherForecast', [
 
 angular.module('weatherForecast').
   component('forecast', {
-    template:   '<div>'+
-                    '<input ng-click="$ctrl.getForecast()" type="submit" value="get forecast">'+
-                '</div>' + 
-                '<div>{{$ctrl.forecast}}</div>',
-        controller: ['forecastService', 'cityValue',
-      function forecastController(forecastService, cityValue) {
+    template:   '<div>{{$ctrl.forecast}}</div>',
+        controller: ['forecastService', '$scope',
+      function forecastController(forecastService, $scope) {
         var self = this;
-        //self.forecast = forecastService.getCityForecast(cityValue);
+        
         self.getForecast = function () {
             self.forecast = forecastService.getCityForecast(forecastService.cityValue);
         };
+        
+        $scope.$on('getForecast', function(event, args) {
+
+            var anyThing = args.any;
+            
+            self.getForecast();
+        });
       }
     ]
   });
   
-angular.module('weatherForecast').value('cityValue', 'wieliczka');
+angular.module('weatherForecast')
+    .service('weatherForecastService', ['$rootScope', function ($rootScope) {
+
+        this.getForecast = function getForecast(city) {
+            $rootScope.$broadcast('getForecast', { any: {} });
+        };
+    }]);

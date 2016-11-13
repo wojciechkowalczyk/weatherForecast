@@ -1,12 +1,6 @@
 angular.module('forecast')
     .service('forecastService', ['$http', function ($http) {
 
-        this.cityValue = 'el Cairo';
-
-        this.getForecast = function getForecast(city) {
-            alert(this.getCityForecast(city));
-        };
-
         this.getCityForecast = function (city) {
             var result;
 
