@@ -1,14 +1,12 @@
 angular.module('cityForm').
   component('cityForm', {
     templateUrl: 'city-form/city-form.template.html',
-    controller: ['forecastService', 'weatherForecastService',  
-      function cityFormController(forecastService, weatherForecastService) {
+    controller: ['cityFormService',  
+      function cityFormController(cityFormService) {
         var self = this;
-        self.getForecast = function getForecast(city) {
-            forecastService.cityValue = city;
-            weatherForecastService.getForecast(forecastService.cityValue);
+        self.setCity = function (city) {
+            cityFormService.setCity(city);
         };
       }
     ]
   });
-  

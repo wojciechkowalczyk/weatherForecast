@@ -6,12 +6,12 @@ angular.module('weatherForecast', [
 angular.module('weatherForecast').
   component('forecast', {
     template:   '<div>{{$ctrl.forecast}}</div>',
-        controller: ['forecastService', '$scope',
-      function forecastController(forecastService, $scope) {
+        controller: ['cityFormService', 'forecastService', '$scope',
+      function forecastController(cityFormService, forecastService, $scope) {
         var self = this;
         
         self.getForecast = function () {
-            self.forecast = forecastService.getCityForecast(forecastService.cityValue);
+            self.forecast = forecastService.getCityForecast(cityFormService.city);
         };
         
         $scope.$on('getForecast', function(event, args) {
@@ -27,7 +27,7 @@ angular.module('weatherForecast').
 angular.module('weatherForecast')
     .service('weatherForecastService', ['$rootScope', function ($rootScope) {
 
-        this.getForecast = function getForecast(city) {
+        this.getCity = function () {
             $rootScope.$broadcast('getForecast', { any: {} });
         };
     }]);
