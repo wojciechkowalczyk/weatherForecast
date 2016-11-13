@@ -1,12 +1,18 @@
 angular.module('forecast')
     .service('forecastService', ['$http', function ($http) {
+            
+        this.apiKey = '80e6daa3a673115878aba8e33628330e';    
 
         this.getCityForecast = function (city) {
+            var beforeCityQuery = 'http://api.openweathermap.org/data/2.5/forecast/daily?q=';
+            var afterCityQuery = '&mode=json&units=metric&cnt=7&apikey=' + this.apiKey;
             var result;
+
+            //alert($http.get(beforeCityQuery + city + afterCityQuery));
 
             $.ajax({
                 async: false, 
-                url: 'http://api.openweathermap.org/data/2.5/forecast/daily?q=' + city + '&mode=json&units=metric&cnt=7&apikey=80e6daa3a673115878aba8e33628330e',
+                url: beforeCityQuery + city + afterCityQuery,
                 dataType:'text',
                 success: function(response) {
                     result = response;
@@ -14,9 +20,10 @@ angular.module('forecast')
             });
 
             return result;
-            //return $http.get('http://api.openweathermap.org/data/2.5/forecast/daily?q=' + city + '&mode=json&units=metric&cnt=7&apikey=80e6daa3a673115878aba8e33628330e');
+            
+            //return $http.get(beforeCityQuery + city + afterCityQuery);
             /*return $http({
-                url: 'http://api.openweathermap.org/data/2.5/forecast/daily?q=' + city + '&mode=json&units=metric&cnt=7&apikey=80e6daa3a673115878aba8e33628330e',
+                url: beforeCityQuery + city + afterCityQuery,
                 method: 'GET',
                 responseType: 'text',
                 transformResponse: [function (data) {
@@ -27,11 +34,14 @@ angular.module('forecast')
         };
 
         this.getLatLonForecast = function (lat, lon) {
+            var beforeLatQuery = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat=';
+            var innerQuery = '&lon=';
+            var afterLonQuery = '&mode=json&units=metric&cnt=7&apikey=' + this.apiKey;
             /*var result;
 
             $.ajax({
                 async: false, 
-                url: 'http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + lat + '&lon=' + lon + '&mode=json&units=metric&cnt=7&apikey=80e6daa3a673115878aba8e33628330e',
+                url: beforeLatQuery + lat + innerQuery + lon + afterLonQuery,
                 dataType:'text',
                 success: function(response) {
                     result = response;
@@ -39,6 +49,6 @@ angular.module('forecast')
             });
 
             return result;*/
-            return $http.get('http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + lat + '&lon=' + lon + '&mode=json&units=metric&cnt=7&apikey=80e6daa3a673115878aba8e33628330e');
+            return $http.get(beforeLatQuery + lat + innerQuery + lon + afterLonQuery);
         };
     }]);
