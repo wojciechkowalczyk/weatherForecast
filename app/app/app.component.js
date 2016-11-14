@@ -7,6 +7,8 @@ angular.module('app').
                     $rootScope.$broadcast('presentForecast',
                             {forecast: forecastService.getCityForecast(args.city)}
                     );
+            
+                    //$rootScope.$broadcast('setCity', {city: 'cityName'});
                 });
 
                 ;

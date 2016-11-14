@@ -1,12 +1,16 @@
 angular.module('cityForm').
     component('cityForm', {
         templateUrl: 'city-form/city-form.template.html',
-        controller: ['$rootScope',
-            function cityFormController($rootScope) {
+        controller: ['$rootScope', '$scope', 
+            function cityFormController($rootScope, $scope) {
                 var self = this;
-                self.setCity = function (city) {
+                self.shareCity = function (city) {
                     $rootScope.$broadcast('cityChanged', {city: city});
                 };
+                
+                $scope.$on('setCity', function (event, args) {
+                    self.city = args.city;
+                });
             }
         ]
     });
