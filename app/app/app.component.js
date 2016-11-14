@@ -1,6 +1,6 @@
 angular.module('app').
     component('app', {
-        templateUrl: 'app.template.html',
+        templateUrl: 'app/app.template.html',
         controller: ['$rootScope', '$scope', 'forecastService', 
             function appController($rootScope, $scope, forecastService) {
                 $scope.$on('cityChanged', function(event, args) {
