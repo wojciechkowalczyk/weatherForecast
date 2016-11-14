@@ -1,5 +1,5 @@
-angular.module('forecast')
-        .service('forecastService', ['$http',
+angular.module('forecast').
+        service('forecastService', ['$http',
             function ($http) {
                 this.apiKey = '80e6daa3a673115878aba8e33628330e';
 
