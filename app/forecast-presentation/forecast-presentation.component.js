@@ -1,16 +1,16 @@
 angular.module('forecastPresentation').
   component('forecastPresentation', {
     templateUrl: 'forecast-presentation/forecast-presentation.template.html',
-    controller: ['forecastService', '$scope',
-      function forecastController(forecastService, $scope) {
+    controller: ['$scope',
+      function forecastController($scope) {
         var self = this;
         
-        self.getForecast = function (city) {
-            self.forecast = forecastService.getCityForecast(city);
+        self.presentForecast = function (forecast) {
+            self.forecast = forecast;
         };
         
-        $scope.$on('getForecast', function(event, args) {
-            self.getForecast(args.city);
+        $scope.$on('presentForecast', function(event, args) {
+            self.presentForecast(args.forecast);
         });
       }
     ]
