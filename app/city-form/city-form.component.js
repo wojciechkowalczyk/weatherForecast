@@ -1,11 +1,11 @@
 angular.module('cityForm').
   component('cityForm', {
     templateUrl: 'city-form/city-form.template.html',
-    controller: ['cityFormService',  
-      function cityFormController(cityFormService) {
+    controller: ['$rootScope', 
+      function cityFormController($rootScope) {
         var self = this;
         self.setCity = function (city) {
-            cityFormService.setCity(city);
+            $rootScope.$broadcast('cityChanged', { city: city });
         };
       }
     ]
