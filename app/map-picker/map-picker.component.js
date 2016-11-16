@@ -4,15 +4,15 @@ angular.module('mapPicker').
             controller: ['$rootScope', '$scope',
                 function mapPickerController($rootScope, $scope) {
                     var self = this;
-                    var marker = null;
-                    var map;
+                    self.marker = null;
+                    self.map;
 
                     $scope.initialize = function() {
                         var mapCanvas = document.getElementById("map");
-                        var myCenter=new google.maps.LatLng(51.508742,-0.120850);
-                        var mapOptions = {center: myCenter, zoom: 5};
-                        map = new google.maps.Map(mapCanvas, mapOptions);
-                        google.maps.event.addListener(map, 'click', function(event) {
+                        var center = new google.maps.LatLng(51.508742,-0.120850);
+                        var mapOptions = {center: center, zoom: 5};
+                        self.map = new google.maps.Map(mapCanvas, mapOptions);
+                        google.maps.event.addListener(self.map, 'click', function(event) {
                           lat = event.latLng.lat(); 
                           lon = event.latLng.lng();
                           self.placeMarker(event.latLng);
@@ -21,12 +21,12 @@ angular.module('mapPicker').
                     };
                     
                     self.placeMarker = function (location) {
-                        if (marker !== null) {
-                            marker.setPosition(location);
+                        if (self.marker !== null) {
+                            self.marker.setPosition(location);
                         } else {
-                            marker = new google.maps.Marker({
+                            self.marker = new google.maps.Marker({
                               position: location,
-                              map: map
+                              map: self.map
                             });
                         }
                       /*var infowindow = new google.maps.InfoWindow({
@@ -38,7 +38,7 @@ angular.module('mapPicker').
                     self.placeLatLonMarker = function (lat, lon) {
                         markerLocation = new google.maps.LatLng(lat, lon);
                         placeMarker(markerLocation); 
-                        map.setCenter(markerLocation);
+                        self.map.setCenter(markerLocation);
                     }
                     
                     self.shareLatLon = function (lat, lon) {
