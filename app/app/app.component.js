@@ -8,11 +8,9 @@ angular.module('app').
                                 {forecast: forecastService.getCityForecast(args.city)}
                         );
 
-                        //$rootScope.$broadcast('setCity', {city: 'cityName'});
+                        $rootScope.$broadcast('setCity', {city: 'cityName'});
                         $rootScope.$broadcast('setLatLon', {lat: 50, lon: 50 });
                     });
-
-                    ;
                 }
             ]
         });
