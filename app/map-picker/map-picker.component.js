@@ -7,40 +7,40 @@ angular.module('mapPicker').
                     self.marker = null;
                     self.map;
 
-                    $scope.initialize = function() {
+                    $scope.initialize = function () {
                         var mapCanvas = document.getElementById("map");
-                        var center = new google.maps.LatLng(51.508742,-0.120850);
+                        var center = new google.maps.LatLng(51.508742, -0.120850);
                         var mapOptions = {center: center, zoom: 5};
                         self.map = new google.maps.Map(mapCanvas, mapOptions);
-                        google.maps.event.addListener(self.map, 'click', function(event) {
-                          lat = event.latLng.lat(); 
-                          lon = event.latLng.lng();
-                          self.placeMarker(event.latLng);
-                          self.shareLatLon(lat, lon);
+                        google.maps.event.addListener(self.map, 'click', function (event) {
+                            lat = event.latLng.lat();
+                            lon = event.latLng.lng();
+                            self.placeMarker(event.latLng);
+                            self.shareLatLon(lat, lon);
                         });
                     };
-                    
+
                     self.placeMarker = function (location) {
                         if (self.marker !== null) {
                             self.marker.setPosition(location);
                         } else {
                             self.marker = new google.maps.Marker({
-                              position: location,
-                              map: self.map
+                                position: location,
+                                map: self.map
                             });
                         }
-                      /*var infowindow = new google.maps.InfoWindow({
-                        content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
-                      });
-                      infowindow.open(self.map, self.marker);*/ 
+                        /*var infowindow = new google.maps.InfoWindow({
+                            content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
+                        });
+                        infowindow.open(self.map, self.marker);*/
                     }
 
                     self.placeLatLonMarker = function (lat, lon) {
                         markerLocation = new google.maps.LatLng(lat, lon);
-                        self.placeMarker(markerLocation); 
+                        self.placeMarker(markerLocation);
                         self.map.setCenter(markerLocation);
                     }
-                    
+
                     self.shareLatLon = function (lat, lon) {
                         $rootScope.$broadcast('LatLonChanged', {lat: lat, lon: lon});
                     };
@@ -48,7 +48,7 @@ angular.module('mapPicker').
                     $scope.$on('setLatLon', function (event, args) {
                         self.placeLatLonMarker(args.lat, args.lon);
                     });
-                    
+
                     google.maps.event.addDomListener(window, 'load', $scope.initialize);
                 }
             ]
