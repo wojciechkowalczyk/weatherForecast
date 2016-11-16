@@ -32,12 +32,12 @@ angular.module('mapPicker').
                       /*var infowindow = new google.maps.InfoWindow({
                         content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
                       });
-                      infowindow.open(map,marker);*/ 
+                      infowindow.open(self.map, self.marker);*/ 
                     }
 
                     self.placeLatLonMarker = function (lat, lon) {
                         markerLocation = new google.maps.LatLng(lat, lon);
-                        placeMarker(markerLocation); 
+                        self.placeMarker(markerLocation); 
                         self.map.setCenter(markerLocation);
                     }
                     
