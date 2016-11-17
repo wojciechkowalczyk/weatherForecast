@@ -13,10 +13,12 @@ angular.module('mapPicker').
                         var mapOptions = {center: center, zoom: 5};
                         self.map = new google.maps.Map(mapCanvas, mapOptions);
                         google.maps.event.addListener(self.map, 'click', function (event) {
-                            lat = event.latLng.lat();
-                            lon = event.latLng.lng();
-                            self.placeMarker(event.latLng);
-                            self.shareLatLon(lat, lon);
+                            $scope.$apply(function () {
+                                lat = event.latLng.lat();
+                                lon = event.latLng.lng();
+                                self.placeMarker(event.latLng);
+                                self.shareLatLon(lat, lon);
+                            });
                         });
                     };
 

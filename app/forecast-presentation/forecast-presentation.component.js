@@ -7,8 +7,6 @@ angular.module('forecastPresentation').
 
                     self.presentForecast = function (forecast) {
                         self.forecast = forecast;
-                        //alert(self.forecast);
-                        //$('#forecast_presentation').html(self.forecast);
                     };
 
                     $scope.$on('presentForecast', function (event, args) {
