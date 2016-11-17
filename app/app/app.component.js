@@ -6,7 +6,7 @@ angular.module('app').
                     var self = this;
                     $scope.$on('cityChanged', function (event, args) {
                         self.forecast = forecastService.getCityForecast(args.city);
-                        self.forecastArray = jQuery.parseJSON(self.forecast);
+                        self.forecastArray = angular.fromJson(self.forecast);
                         
                         $rootScope.$broadcast('presentForecast',
                                 {forecast: self.forecast}
@@ -18,7 +18,7 @@ angular.module('app').
                     
                     $scope.$on('latLonChanged', function (event, args) {
                         self.forecast = forecastService.getLatLonForecast(args.lat, args.lon);
-                        self.forecastArray = jQuery.parseJSON(self.forecast);
+                        self.forecastArray = angular.fromJson(self.forecast);
                         
                         $rootScope.$broadcast('presentForecast',
                                 {forecast: self.forecast}
