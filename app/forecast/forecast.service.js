@@ -37,18 +37,18 @@ angular.module('forecast').
                     var beforeLatQuery = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat=';
                     var innerQuery = '&lon=';
                     var afterLonQuery = '&mode=json&units=metric&cnt=7&apikey=' + this.apiKey;
-                    /*var result;
-                     
-                     $.ajax({
-                     async: false, 
-                     url: beforeLatQuery + lat + innerQuery + lon + afterLonQuery,
-                     dataType:'text',
-                     success: function(response) {
-                     result = response;
-                     }
-                     });
-                     
-                     return result;*/
-                    return $http.get(beforeLatQuery + lat + innerQuery + lon + afterLonQuery);
+                    var result;
+
+                    $.ajax({
+                        async: false,
+                        url: beforeLatQuery + lat + innerQuery + lon + afterLonQuery,
+                        dataType: 'text',
+                        success: function (response) {
+                            result = response;
+                        }
+                    });
+
+                    return result;
+                    //return $http.get(beforeLatQuery + lat + innerQuery + lon + afterLonQuery);
                 };
             }]);

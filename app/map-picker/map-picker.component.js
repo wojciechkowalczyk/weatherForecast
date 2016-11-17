@@ -29,20 +29,16 @@ angular.module('mapPicker').
                                 map: self.map
                             });
                         }
-                        /*var infowindow = new google.maps.InfoWindow({
-                            content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
-                        });
-                        infowindow.open(self.map, self.marker);*/
-                    }
+                    };
 
                     self.placeLatLonMarker = function (lat, lon) {
                         markerLocation = new google.maps.LatLng(lat, lon);
                         self.placeMarker(markerLocation);
                         self.map.setCenter(markerLocation);
-                    }
+                    };
 
                     self.shareLatLon = function (lat, lon) {
-                        $rootScope.$broadcast('LatLonChanged', {lat: lat, lon: lon});
+                        $rootScope.$broadcast('latLonChanged', {lat: lat, lon: lon});
                     };
 
                     $scope.$on('setLatLon', function (event, args) {

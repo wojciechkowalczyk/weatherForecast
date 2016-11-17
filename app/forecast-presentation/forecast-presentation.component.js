@@ -11,6 +11,7 @@ angular.module('forecastPresentation').
 
                     $scope.$on('presentForecast', function (event, args) {
                         self.presentForecast(args.forecast);
+                        //alert(args.forecast);
                     });
                 }
             ]

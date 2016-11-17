@@ -9,7 +9,9 @@ angular.module('cityForm').
                     };
 
                     $scope.$on('setCity', function (event, args) {
+                        //alert('setcity ' + args.city);
                         self.city = args.city;
+                        //$('#city').val(args.city);
                     });
                 }
             ]
