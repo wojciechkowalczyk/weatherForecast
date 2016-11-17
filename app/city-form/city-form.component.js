@@ -4,14 +4,15 @@ angular.module('cityForm').
             controller: ['$rootScope', '$scope',
                 function cityFormController($rootScope, $scope) {
                     var self = this;
+                    self.city = '';
                     self.shareCity = function (city) {
                         $rootScope.$broadcast('cityChanged', {city: city});
                     };
 
                     $scope.$on('setCity', function (event, args) {
-                        //alert('setcity ' + args.city);
                         self.city = args.city;
                         //$('#city').val(args.city);
+                        //alert('setcity ' + self.city);
                     });
                 }
             ]
