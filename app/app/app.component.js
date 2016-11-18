@@ -30,7 +30,7 @@ angular.module('app').
                                     );
 
                                     $rootScope.$broadcast('setCity', {city: self.forecastArray.city.name});
-                                    $rootScope.$broadcast('setLatLon', {lat: self.forecastArray.city.coord.lat, lon: self.forecastArray.city.coord.lon});
+                                    //$rootScope.$broadcast('setLatLon', {lat: self.forecastArray.city.coord.lat, lon: self.forecastArray.city.coord.lon});
                                 });
                     });
                 }
