@@ -1,1 +1,3 @@
-angular.module('forecastPresentation', []);
+angular.module('forecastPresentation', [
+    'forecastCharts'
+]);
