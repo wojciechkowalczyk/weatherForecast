@@ -1,6 +1,6 @@
 angular.module('forecast').
-        service('forecastService', ['$http', '$q', 
-            function ($http, $q) {
+        service('forecastService', ['$http', 
+            function ($http) {
                 this.apiKey = '80e6daa3a673115878aba8e33628330e';
 
                 this.getCityForecast = function (city) {
@@ -13,11 +13,7 @@ angular.module('forecast').
                         headers: {
                             "content-type": "application/json",
                             "Accept": "application/json"
-                        },
-                        transformResponse: [function (data) {
-                                return data;
-                            }
-                        ]
+                        }
                     }).then(function (result) {
                         return result.data;
                     });
@@ -34,11 +30,7 @@ angular.module('forecast').
                         headers: {
                             "content-type": "application/json",
                             "Accept": "text/plain"
-                        },
-                        transformResponse: [function (data) {
-                                return data;
-                            }
-                        ]
+                        }
                     }).then(function (result) {
                         return result.data;
                     });
