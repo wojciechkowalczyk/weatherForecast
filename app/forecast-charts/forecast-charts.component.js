@@ -1,8 +1,8 @@
 angular.module('forecastCharts').
         component('forecastCharts', {
             templateUrl: 'forecast-charts/forecast-charts.template.html',
-            controller: ['$rootScope', '$scope', 'forecastService',
-                function forecastChartsController($rootScope, $scope, forecastService) {
+            controller: ['$rootScope', '$scope',
+                function forecastChartsController($rootScope, $scope) {
                     var self = this;
 
                     google.charts.load('current', {packages: ['corechart']});
@@ -10,25 +10,23 @@ angular.module('forecastCharts').
 
 
                     self.populateCharts = function (forecast) {
-                        var resultArray = angular.fromJson(forecast);
-                        //console.log(resultArray); 
-                        var cnt = resultArray.cnt;
+                        var forecastArray = angular.fromJson(forecast);
+                        var cnt = forecastArray.cnt;
                         var list = new Array();
-                        list = resultArray.list;
-                        //console.log(list); 
-                        city = resultArray.city.name;
-                        
+                        list = forecastArray.list;
+                        city = forecastArray.city.name;
+
                         temperatureArrayHeader = ['Date', 'morning', 'day', 'evening', 'night', 'minimum', 'maximum'];
                         temperatureArray = new Array();
                         temperatureArray[0] = temperatureArrayHeader;
-                        
+
                         percentageArrayHeader = ['Date', 'humidity', 'clouds'];
                         percentageArray = new Array();
                         percentageArray[0] = percentageArrayHeader;
                         pressureArrayHeader = ['Date', 'pressure'];
                         pressureArray = new Array();
                         pressureArray[0] = pressureArrayHeader;
-                        
+
                         /*windArrayHeader = ['Date', 'humidity', 'clouds'];  
                          windArray = new Array();
                          windArray[0] = windArrayHeader;*/
@@ -50,7 +48,6 @@ angular.module('forecastCharts').
                             pressureArray[i + 1][0] = self.day(list[i].dt);
                             pressureArray[i + 1][1] = list[i].pressure;
                         }
-                        //console.log(temperatureArray);
 
                         self.drawVisualization(temperatureArray);
                         self.drawChart(percentageArray, pressureArray);
@@ -109,7 +106,6 @@ angular.module('forecastCharts').
                     $scope.$on('populateCharts', function (event, args) {
                         self.populateCharts(args.forecast);
                     });
-
                 }
             ]
         });
