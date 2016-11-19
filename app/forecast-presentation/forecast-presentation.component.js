@@ -8,6 +8,7 @@ angular.module('forecastPresentation').
                     self.presentForecast = function (forecast) {
                         self.forecast = forecast;
                         $rootScope.$broadcast('populateCharts', {forecast: forecast});
+                        $rootScope.$broadcast('showModal', {city: angular.fromJson(forecast).city.name});
                     };
 
                     $scope.$on('presentForecast', function (event, args) {

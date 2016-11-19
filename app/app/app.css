@@ -25,3 +25,8 @@
     padding: 0;
     position: relative;
 } 
+
+/*#modal {
+    position: absolute;
+    z-index: 10005;
+}*/
