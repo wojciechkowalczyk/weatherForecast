@@ -9,5 +9,6 @@ angular.module('modal').
                         $('#modal').modal('show');
                     });
                 }
-            ]
+            ], 
+            transclude: true
         });
