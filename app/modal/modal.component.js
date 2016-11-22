@@ -4,11 +4,17 @@ angular.module('modal').
             controller: ['$rootScope', '$scope',
                 function modalController($rootScope, $scope) {
                     $scope.title = 'forecast';
+
+                    $scope.showModal = function () {
+                        $('#modal').modal('show');
+                        $rootScope.$broadcast('modalShown', {});
+                    };
+
                     $scope.$on('showModal', function (event, args) {
                         $scope.title = args.city + ' forecast';
-                        $('#modal').modal('show');
+                        $scope.showModal();
                     });
                 }
-            ], 
+            ],
             transclude: true
         });
