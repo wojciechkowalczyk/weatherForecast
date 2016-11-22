@@ -6,8 +6,9 @@ angular.module('modal').
                     $scope.title = 'forecast';
 
                     $scope.showModal = function () {
-                        $('#modal').modal('show');
-                        $rootScope.$broadcast('modalShown', {});
+                        $('#modal').modal('show').then(
+                                $rootScope.$broadcast('modalShown', {})
+                                );
                     };
 
                     $scope.$on('showModal', function (event, args) {
