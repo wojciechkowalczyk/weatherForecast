@@ -1,9 +1,12 @@
-<style>
-    body {
-        font-family: "Lato", sans-serif;
-    }
+<div id="drawer">
+    <div id="title">
+        <p>{{title}}</p>
+    </div>
+    <div ng-transclude=""></div>    
+</div>
 
-    .sidenav {
+<style>
+    #drawer {
         height: 0;
         width: 100%;
         position: absolute;
@@ -16,45 +19,11 @@
         padding-top: 0px;
     }
 
-    .sidenav a {
-        padding: 8px 8px 8px 32px;
+    #title {
+        margin-top: 2%;
+        margin-left: 33%;
         text-decoration: none;
         font-size: 25px;
         color: #818181;
-        display: block;
-        transition: 0.3s
-    }
-
-    .sidenav a:hover, .offcanvas a:focus{
-        color: #f1f1f1;
-    }
-
-    .sidenav .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-    }
-
-    @media screen and (max-height: 450px) {
-        .sidenav {padding-top: 0px;}
-        .sidenav a {font-size: 18px;}
     }
 </style>
-
-<div id="mySidenav" class="sidenav" ng-transclude="">
-</div>
-
-
-<!--<div class="modal show"> 
-    <div class="modal-lg modal-dialog"> 
-        <div class="modal-content"> 
-            <div class="modal-header"> 
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> 
-                <h4 class="modal-title">{{ title }}</h4> 
-            </div> 
-            <div class="modal-body" ng-transclude=""></div> 
-        </div> 
-    </div> 
-</div>-->

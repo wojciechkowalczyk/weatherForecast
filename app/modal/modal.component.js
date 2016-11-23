@@ -1,34 +1,34 @@
-angular.module('modal').
-        component('modal', {
+angular.module('drawer').
+        component('drawer', {
             templateUrl: 'modal/modal.template.html',
             controller: ['$rootScope', '$scope',
-                function modalController($rootScope, $scope) {
+                function drawerController($rootScope, $scope) {
                     $scope.title = 'forecast';
 
-                    $scope.openNav = function () {
-                        document.getElementById("mySidenav").style.height = "100%";
+                    $scope.openDrawer = function () {
+                        document.getElementById("drawer").style.height = "100%";
                         open = true;
                     };
 
-                    $scope.closeNav = function () {
-                        document.getElementById("mySidenav").style.height = "0";
+                    $scope.closeDrawer = function () {
+                        document.getElementById("drawer").style.height = "0";
                         open = false;
                     };
 
                     document.getElementsByTagName("BODY")[0].onclick = function (e) {
                         if (open) {
-                            $scope.closeNav();
+                            $scope.closeDrawer();
                         }
                     };
 
-                    $scope.showModal = function () {
-                        $scope.openNav();
-                        $rootScope.$broadcast('modalShown', {});
+                    $scope.showDrawer = function () {
+                        $scope.openDrawer();
+                        $rootScope.$broadcast('drawerShown', {});
                     };
 
-                    $scope.$on('showModal', function (event, args) {
+                    $scope.$on('showDrawer', function (event, args) {
                         $scope.title = args.city + ' forecast';
-                        $scope.showModal();
+                        $scope.showDrawer();
                     });
                 }
             ],

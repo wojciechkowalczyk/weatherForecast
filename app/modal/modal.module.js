@@ -1,1 +1,1 @@
-angular.module('modal', []);
+angular.module('drawer', []);

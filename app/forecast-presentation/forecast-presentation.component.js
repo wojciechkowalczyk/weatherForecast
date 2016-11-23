@@ -7,10 +7,10 @@ angular.module('forecastPresentation').
 
                     self.presentForecast = function (forecast) {
                         self.forecast = forecast;
-                        $rootScope.$broadcast('showModal', {city: angular.fromJson(forecast).city.name});
+                        $rootScope.$broadcast('showDrawer', {city: angular.fromJson(forecast).city.name});
                     };
                     
-                    $scope.$on('modalShown', function (event, args) {
+                    $scope.$on('drawerShown', function (event, args) {
                         $rootScope.$broadcast('populateCharts', {forecast: self.forecast});
                     });
 

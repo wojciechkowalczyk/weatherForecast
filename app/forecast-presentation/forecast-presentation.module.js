@@ -1,4 +1,4 @@
 angular.module('forecastPresentation', [
-    'modal', 
+    'drawer', 
     'forecastCharts'
 ]);
