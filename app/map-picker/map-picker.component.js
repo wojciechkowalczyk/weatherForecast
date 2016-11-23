@@ -8,7 +8,7 @@ angular.module('mapPicker').
                     self.map;
 
                     $scope.initialize = function () {
-                        var mapCanvas = document.getElementById("map");
+                        var mapCanvas = document.getElementById("map_picker");
                         var center = new google.maps.LatLng(51.508742, -0.120850);
                         var mapOptions = {center: center, zoom: 5};
                         self.map = new google.maps.Map(mapCanvas, mapOptions);
