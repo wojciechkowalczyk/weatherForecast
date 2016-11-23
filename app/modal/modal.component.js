@@ -6,7 +6,7 @@ angular.module('modal').
                     $scope.title = 'forecast';
 
                     $scope.showModal = function () {
-                        $('#modal').modal('show');
+                        openNav();
                         $rootScope.$broadcast('modalShown', {});
                     };
 
@@ -18,3 +18,25 @@ angular.module('modal').
             ],
             transclude: true
         });
+        
+        
+        var open = false;
+        function openNav() {
+            document.getElementById("mySidenav").style.height = "100%";
+            open = true;
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.height = "0";
+            open = fale;
+        }
+
+        document.getElementsByTagName("BODY")[0].onclick = function (e) {
+            if (/*e.target.id !== "mySidenav"
+                    && e.target.id !== "openbtn"
+                    && */open) {
+                closeNav();
+            } else {
+                //openNav();
+            }
+        };
