@@ -49,12 +49,13 @@ angular.module('forecastCharts').
                             pressureArray[i + 1][1] = list[i].pressure;
                         }
 
-                        self.drawVisualization(temperatureArray);
-                        self.drawChart(percentageArray, pressureArray);
+                        self.drawTemperature(temperatureArray);
+                        self.drawPercentageQuantities(percentageArray);
+                        self.drawPressure(pressureArray);
                     };
 
-                    self.drawVisualization = function (temperatureArray) {
-                        var combo_data = google.visualization.arrayToDataTable(temperatureArray);
+                    self.drawTemperature = function (temperatureArray) {
+                        var data = google.visualization.arrayToDataTable(temperatureArray);
                         var options = {
                             title: 'Temperature',
                             vAxis: {title: 'Celsius degrees'},
@@ -65,27 +66,30 @@ angular.module('forecastCharts').
                                 5: {type: 'line'}
                             }
                         };
-                        var combo_chart = new google.visualization.ComboChart(document.getElementById('combo_chart_div'));
-                        combo_chart.draw(combo_data, options);
+                        var chart = new google.visualization.ComboChart(document.getElementById('temperature_chart'));
+                        chart.draw(data, options);
                     };
 
-                    self.drawChart = function (percentageArray, pressureArray) {
+                    self.drawPercentageQuantities = function (percentageArray) {
                         var data = google.visualization.arrayToDataTable(percentageArray);
                         var options = {
                             title: 'Humidity and Clouds',
                             vAxis: {title: 'percentages', titleTextStyle: {color: '#333'}},
                             //vAxis: {minValue: 0}
                         };
-                        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                        var chart = new google.visualization.AreaChart(document.getElementById('percentage_quantities_chart'));
                         chart.draw(data, options);
-                        var pressureData = google.visualization.arrayToDataTable(pressureArray);
-                        var pressureOptions = {
+                    };
+
+                    self.drawPressure = function (pressureArray) {
+                        var data = google.visualization.arrayToDataTable(pressureArray);
+                        var options = {
                             title: 'Pressure',
                             vAxis: {title: 'hPa', titleTextStyle: {color: '#333'}},
                             //vAxis: {minValue: 0}
                         };
-                        var pressureChart = new google.visualization.AreaChart(document.getElementById('pressure_chart_div'));
-                        pressureChart.draw(pressureData, pressureOptions);
+                        var chart = new google.visualization.AreaChart(document.getElementById('pressure_chart'));
+                        chart.draw(data, options);
                     };
 
                     self.day = function (unix_timestamp) {
