@@ -5,24 +5,24 @@ angular.module('modal').
                 function modalController($rootScope, $scope) {
                     $scope.title = 'forecast';
 
-                    function openNav() {
+                    $scope.openNav = function () {
                         document.getElementById("mySidenav").style.height = "100%";
                         open = true;
-                    }
+                    };
 
-                    function closeNav() {
+                    $scope.closeNav = function () {
                         document.getElementById("mySidenav").style.height = "0";
                         open = false;
-                    }
+                    };
 
                     document.getElementsByTagName("BODY")[0].onclick = function (e) {
                         if (open) {
-                            closeNav();
+                            $scope.closeNav();
                         }
                     };
 
                     $scope.showModal = function () {
-                        openNav();
+                        $scope.openNav();
                         $rootScope.$broadcast('modalShown', {});
                     };
 
