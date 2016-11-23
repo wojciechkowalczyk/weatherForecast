@@ -28,6 +28,7 @@ angular.module('mapPicker').
                         } else {
                             self.marker = new google.maps.Marker({
                                 position: location,
+                                //icon: 'map-picker/map-picker.marker-icon.png',
                                 map: self.map
                             });
                         }
