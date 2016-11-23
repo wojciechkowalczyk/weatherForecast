@@ -28,7 +28,7 @@ angular.module('modal').
 
         function closeNav() {
             document.getElementById("mySidenav").style.height = "0";
-            open = fale;
+            open = false;
         }
 
         document.getElementsByTagName("BODY")[0].onclick = function (e) {
