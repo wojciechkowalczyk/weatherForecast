@@ -33,10 +33,12 @@ angular.module('mapPicker').
                         }
                     };
 
-                    self.placeLatLonMarker = function (lat, lon) {
+                    self.placeLatLonMarker = function (lat, lon, center) {
                         markerLocation = new google.maps.LatLng(lat, lon);
                         self.placeMarker(markerLocation);
-                        self.map.setCenter(markerLocation);
+                        if (center) {
+                            self.map.setCenter(markerLocation);
+                        }
                     };
 
                     self.shareLatLon = function (lat, lon) {
@@ -44,7 +46,7 @@ angular.module('mapPicker').
                     };
 
                     $scope.$on('setLatLon', function (event, args) {
-                        self.placeLatLonMarker(args.lat, args.lon);
+                        self.placeLatLonMarker(args.lat, args.lon, args.center);
                     });
 
                     google.maps.event.addDomListener(window, 'load', $scope.initialize);
