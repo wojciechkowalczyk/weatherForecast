@@ -1,6 +1,6 @@
 angular.module('drawer').
         component('drawer', {
-            templateUrl: 'modal/modal.template.html',
+            templateUrl: 'drawer/drawer.template.html',
             controller: ['$rootScope', '$scope',
                 function drawerController($rootScope, $scope) {
                     $scope.title = 'forecast';
