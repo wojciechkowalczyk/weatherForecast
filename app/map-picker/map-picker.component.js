@@ -49,7 +49,7 @@ angular.module('mapPicker').
                         self.placeLatLonMarker(args.lat, args.lon, args.center);
                     });
 
-                    google.maps.event.addDomListener(window, 'load', $scope.initialize);
+                    google.maps.event.addDomListener(window, 'load', $scope.initialize());
                 }
             ]
         });
