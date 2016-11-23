@@ -12,6 +12,10 @@
     height: 100%;
 }
 
+.cbalink {
+    visibility: collapse;
+}
+
 .city_form {
     position: absolute;
     z-index: 10004;
@@ -24,5 +28,5 @@
     height: 100%;
     margin: 0;
     padding: 0;
-    position: relative;
+    position: absolute;
 } 
