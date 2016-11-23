@@ -4,19 +4,20 @@ angular.module('drawer').
             controller: ['$rootScope', '$scope',
                 function drawerController($rootScope, $scope) {
                     $scope.title = 'forecast';
+                    $scope.opened = false;
 
                     $scope.openDrawer = function () {
                         document.getElementById("drawer").style.height = "100%";
-                        open = true;
+                        $scope.opened = true;
                     };
 
                     $scope.closeDrawer = function () {
                         document.getElementById("drawer").style.height = "0";
-                        open = false;
+                        $scope.opened = false;
                     };
 
                     document.getElementsByTagName("BODY")[0].onclick = function (e) {
-                        if (open) {
+                        if ($scope.opened) {
                             $scope.closeDrawer();
                         }
                     };
