@@ -1,7 +1,7 @@
 angular.module('forecast').
         service('forecastService', ['$http',
             function ($http) {
-                this.apiKey = '80e6daa3a673115878aba8e33628330e';
+                this.apiKey = '32c84dac0157cab102f1f3e177d124bb';
 
                 this.getCityForecast = function (city) {
                     var beforeCityQuery = 'http://api.openweathermap.org/data/2.5/forecast/daily?q=';
